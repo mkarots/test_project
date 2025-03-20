@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
 from datetime import datetime
+import random
 
 # Configure logging
 logging.basicConfig(
@@ -29,6 +30,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Add word lists
+ADJECTIVES = ['happy', 'bright', 'blue', 'clever', 'gentle', 'swift', 'bold', 'calm', 'kind', 'wise']
+NOUNS = ['cat', 'sun', 'tree', 'river', 'mountain', 'bird', 'book', 'cloud', 'star', 'flower']
+
 @app.get("/")
 async def root():
     logger.info("Received request to root endpoint")
@@ -52,6 +57,17 @@ async def get_datetime():
     return {
         "datetime": current_time.isoformat(),
         "timezone": current_time.astimezone().tzinfo.tzname(current_time)
+    }
+
+@app.get("/random-words")
+async def get_random_words():
+    logger.info("Received request for random words")
+    random_adj = random.choice(ADJECTIVES)
+    random_noun = random.choice(NOUNS)
+    return {
+        "words": f"{random_adj} {random_noun}",
+        "adjective": random_adj,
+        "noun": random_noun
     }
 
 if __name__ == "__main__":
