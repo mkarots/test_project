@@ -70,6 +70,7 @@ async def get_random_words():
         "noun": random_noun
     }
 
+
 if __name__ == "__main__":
     logger.info("Starting Airway API server")
     uvicorn.run(app, host="0.0.0.0", port=8080)
