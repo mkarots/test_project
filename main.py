@@ -60,6 +60,7 @@ async def get_datetime():
         "timezone": current_time.astimezone().tzinfo.tzname(current_time)
     }
 
+
 @app.get("/random-words")
 async def get_random_words():
     logger.info("Received request for random words")
