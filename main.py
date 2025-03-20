@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(
@@ -42,6 +43,15 @@ async def health_check():
     return {
         "status": "healthy",
         "version": "0.1.0"
+    }
+
+@app.get("/datetime")
+async def get_datetime():
+    logger.info("Received request for current datetime")
+    current_time = datetime.now()
+    return {
+        "datetime": current_time.isoformat(),
+        "timezone": current_time.astimezone().tzinfo.tzname(current_time)
     }
 
 if __name__ == "__main__":
