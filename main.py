@@ -30,9 +30,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 # Add word lists
-ADJECTIVES = ['happy', 'bright', 'blue', 'clever', 'gentle', 'swift', 'bold', 'calm', 'kind', 'wise']
-NOUNS = ['cat', 'sun', 'tree', 'river', 'mountain', 'bird', 'book', 'cloud', 'star', 'flower']
+ADJECTIVES = ['happy', 'bright', 'blue', 'clever', 'gentle', 'swift', 'bold', 'calm', 'kind', 'wise', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick', 'happy', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick']
+NOUNS = ['cat', 'sun', 'tree', 'river', 'mountain', 'bird', 'book', 'cloud', 'star', 'flower', 'dog', 'car', 'house', 'computer', 'phone', 'food', 'water', 'sleep', 'work', 'play', 'movie', 'music', 'art', 'science', 'math', 'history', 'nature', 'travel', 'adventure', 'vacation', 'holiday']
 
 @app.get("/")
 async def root():
