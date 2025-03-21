@@ -63,6 +63,7 @@ async def get_datetime():
 
 
 
+
 @app.get("/random-words")
 async def get_random_words():
     logger.info("Received request for random words")
