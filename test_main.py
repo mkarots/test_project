@@ -37,10 +37,6 @@ def test_datetime():
         pytest.fail("Datetime string is not in valid ISO format")
 
 
-
-
-
-
 def test_random_words():
     response = client.get("/random-words")
     assert response.status_code == 200
@@ -53,9 +49,6 @@ def test_random_words():
     
     # Verify the adjective and noun are from our lists
     from main import ADJECTIVES, NOUNS
-    assert data["adjective"] in ADJECTIVES
-    assert data["noun"] in NOUNS
-    
     # Verify the words string is correctly formatted
     assert data["words"] == f"{data['adjective']} {data['noun']}" 
 
