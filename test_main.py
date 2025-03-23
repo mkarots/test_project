@@ -6,6 +6,7 @@ from datetime import datetime
 
 client = TestClient(app)
 
+
 def test_root_endpoint():
     response = client.get("/")
     assert response.status_code == 200
