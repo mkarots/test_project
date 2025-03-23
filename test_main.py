@@ -14,6 +14,7 @@ def test_root_endpoint():
         "status": "running"
     }
 
+
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
