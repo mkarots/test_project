@@ -85,6 +85,7 @@ async def get_random_words():
         "noun": random_noun
     }
 
+
 @app.post("/todos", response_model=TodoItem)
 async def create_todo(todo: TodoItem):
     logger.info("Creating new todo item")
