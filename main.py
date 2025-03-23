@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
+from datetime import datetime
+import random
 
 # Configure logging
 logging.basicConfig(
@@ -28,6 +30,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# Add word lists
+ADJECTIVES = ['happy', 'bright', 'blue', 'clever', 'gentle', 'swift', 'bold', 'calm', 'kind', 'wise', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick', 'happy', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick']
+NOUNS = ['cat', 'sun', 'tree', 'river', 'mountain', 'bird', 'book', 'cloud', 'star', 'flower', 'dog', 'car', 'house', 'computer', 'phone', 'food', 'water', 'sleep', 'work', 'play', 'movie', 'music', 'art', 'science', 'math', 'history', 'nature', 'travel', 'adventure', 'vacation', 'holiday']
+
 @app.get("/")
 async def root():
     logger.info("Received request to root endpoint")
@@ -44,6 +51,28 @@ async def health_check():
         "version": "0.1.0"
     }
 
+@app.get("/datetime")
+async def get_datetime():
+    logger.info("Received request for current datetime")
+    current_time = datetime.now()
+    return {
+        "datetime": current_time.isoformat(),
+        "timezone": current_time.astimezone().tzinfo.tzname(current_time)
+    }
+
+@app.get("/random-words")
+async def get_random_words():
+    logger.info("Received request for random words")
+    random_adj = random.choice(ADJECTIVES)
+    random_noun = random.choice(NOUNS)
+    return {
+        "words": f"{random_adj} {random_noun}",
+        "adjective": random_adj,
+        "noun": random_noun
+    }
+
 if __name__ == "__main__":
     logger.info("Starting Airway API server")
     uvicorn.run(app, host="0.0.0.0", port=8080)
+
+
