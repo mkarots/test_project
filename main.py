@@ -112,6 +112,7 @@ async def get_todo(todo_id: int):
         raise HTTPException(status_code=404, detail="Todo not found")
     return todo
 
+
 @app.put("/todos/{todo_id}", response_model=TodoItem)
 async def update_todo(todo_id: int, todo_update: TodoItem):
     logger.info(f"Updating todo with id {todo_id}")
