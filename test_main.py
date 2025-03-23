@@ -58,3 +58,83 @@ def test_random_words_length():
     data = response.json()
     assert len(data["words"]) <= 10
 
+def test_create_todo():
+    todo_data = {
+        "title": "Test todo",
+        "description": "Test description",
+        "completed": False
+    }
+    response = client.post("/todos", json=todo_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["title"] == todo_data["title"]
+    assert data["description"] == todo_data["description"]
+    assert data["completed"] == todo_data["completed"]
+    assert "id" in data
+    assert "created_at" in data
+
+def test_get_todos():
+    # First, create a todo
+    todo_data = {"title": "Test todo"}
+    client.post("/todos", json=todo_data)
+    
+    response = client.get("/todos")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+
+def test_get_single_todo():
+    # First, create a todo
+    todo_data = {"title": "Test todo"}
+    create_response = client.post("/todos", json=todo_data)
+    todo_id = create_response.json()["id"]
+    
+    response = client.get(f"/todos/{todo_id}")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["id"] == todo_id
+    assert data["title"] == todo_data["title"]
+
+def test_update_todo():
+    # First, create a todo
+    todo_data = {"title": "Test todo"}
+    create_response = client.post("/todos", json=todo_data)
+    todo_id = create_response.json()["id"]
+    
+    # Update the todo
+    update_data = {
+        "title": "Updated todo",
+        "completed": True
+    }
+    response = client.put(f"/todos/{todo_id}", json=update_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["title"] == update_data["title"]
+    assert data["completed"] == update_data["completed"]
+
+def test_delete_todo():
+    # First, create a todo
+    todo_data = {"title": "Test todo"}
+    create_response = client.post("/todos", json=todo_data)
+    todo_id = create_response.json()["id"]
+    
+    # Delete the todo
+    response = client.delete(f"/todos/{todo_id}")
+    assert response.status_code == 200
+    
+    # Verify todo is deleted
+    get_response = client.get(f"/todos/{todo_id}")
+    assert get_response.status_code == 404
+
+def test_get_nonexistent_todo():
+    response = client.get("/todos/9999")
+    assert response.status_code == 404
+
+@pytest.fixture(autouse=True)
+def clear_todos():
+    # Clear todos before each test
+    todos.clear()
+    global current_id
+    current_id = 1
+
