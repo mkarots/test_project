@@ -126,6 +126,7 @@ async def update_todo(todo_id: int, todo_update: TodoItem):
     todos[todo_idx] = update_data
     return update_data
 
+
 @app.delete("/todos/{todo_id}")
 async def delete_todo(todo_id: int):
     logger.info(f"Deleting todo with id {todo_id}")
