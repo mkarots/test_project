@@ -3,6 +3,7 @@ from main import app
 import pytest
 from datetime import datetime
 
+
 client = TestClient(app)
 
 def test_root_endpoint():
