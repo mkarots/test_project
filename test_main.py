@@ -53,3 +53,11 @@ def test_random_words():
     
     # Verify the words string is correctly formatted
     assert data["words"] == f"{data['adjective']} {data['noun']}" 
+
+
+def test_random_words_length():
+    response = client.get("/random-words")
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["words"]) <= 10
+
