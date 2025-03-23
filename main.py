@@ -136,6 +136,7 @@ async def delete_todo(todo_id: int):
     todos.pop(todo_idx)
     return {"message": "Todo deleted successfully"}
 
+
 if __name__ == "__main__":
     logger.info("Starting Airway API server")
     uvicorn.run(app, host="0.0.0.0", port=8080)
