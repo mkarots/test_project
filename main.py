@@ -65,6 +65,7 @@ async def health_check():
         "version": "0.1.0"
     }
 
+
 @app.get("/datetime")
 async def get_datetime():
     logger.info("Received request for current datetime")
