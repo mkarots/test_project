@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
 import logging
-from datetime import datetime
+from datetime import datetime, date
 import random
 
 # Configure logging
@@ -48,6 +48,19 @@ class TodoItem(BaseModel):
 # In-memory storage for todos
 todos = []
 current_id = 1
+
+# Project Timeline models
+class Milestone(BaseModel):
+    id: Optional[int] = None
+    title: str
+    description: Optional[str] = None
+    due_date: date
+    completed: bool = False
+    created_at: Optional[datetime] = None
+
+# In-memory storage for milestones
+milestones = []
+milestone_current_id = 1
 
 @app.get("/")
 async def root():
@@ -140,6 +153,71 @@ async def delete_todo(todo_id: int):
     todos.pop(todo_idx)
     return {"message": "Todo deleted successfully"}
 
+@app.post("/timeline/milestones", response_model=Milestone)
+async def create_milestone(milestone: Milestone):
+    logger.info("Creating new milestone")
+    global milestone_current_id
+    
+    new_milestone = milestone.model_dump()
+    new_milestone["id"] = milestone_current_id
+    new_milestone["created_at"] = datetime.now()
+    
+    milestones.append(new_milestone)
+    milestone_current_id += 1
+    
+    return new_milestone
+
+@app.get("/timeline/milestones", response_model=List[Milestone])
+async def get_milestones():
+    logger.info("Fetching all milestones")
+    return sorted(milestones, key=lambda x: x["due_date"])
+
+@app.get("/timeline/milestones/{milestone_id}", response_model=Milestone)
+async def get_milestone(milestone_id: int):
+    logger.info(f"Fetching milestone with id {milestone_id}")
+    milestone = next((m for m in milestones if m["id"] == milestone_id), None)
+    if milestone is None:
+        raise HTTPException(status_code=404, detail="Milestone not found")
+    return milestone
+
+@app.put("/timeline/milestones/{milestone_id}", response_model=Milestone)
+async def update_milestone(milestone_id: int, milestone_update: Milestone):
+    logger.info(f"Updating milestone with id {milestone_id}")
+    milestone_idx = next((idx for idx, m in enumerate(milestones) if m["id"] == milestone_id), None)
+    if milestone_idx is None:
+        raise HTTPException(status_code=404, detail="Milestone not found")
+    
+    update_data = milestone_update.model_dump(exclude_unset=True)
+    update_data["id"] = milestone_id
+    update_data["created_at"] = milestones[milestone_idx]["created_at"]
+    
+    milestones[milestone_idx] = update_data
+    return update_data
+
+@app.delete("/timeline/milestones/{milestone_id}")
+async def delete_milestone(milestone_id: int):
+    logger.info(f"Deleting milestone with id {milestone_id}")
+    milestone_idx = next((idx for idx, m in enumerate(milestones) if m["id"] == milestone_id), None)
+    if milestone_idx is None:
+        raise HTTPException(status_code=404, detail="Milestone not found")
+    
+    milestones.pop(milestone_idx)
+    return {"message": "Milestone deleted successfully"}
+
+@app.get("/timeline/overview")
+async def get_timeline_overview():
+    logger.info("Fetching timeline overview")
+    now = datetime.now().date()
+    
+    return {
+        "total_milestones": len(milestones),
+        "completed_milestones": len([m for m in milestones if m["completed"]]),
+        "upcoming_milestones": len([m for m in milestones if m["due_date"] > now and not m["completed"]]),
+        "overdue_milestones": len([m for m in milestones if m["due_date"] < now and not m["completed"]]),
+        "next_deadline": min((m for m in milestones if not m["completed"]), 
+                           key=lambda x: x["due_date"], 
+                           default=None)
+    }
 
 if __name__ == "__main__":
     logger.info("Starting Airway API server")

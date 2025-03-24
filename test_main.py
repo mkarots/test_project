@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from main import app
 import pytest
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 
 client = TestClient(app)
@@ -145,4 +145,100 @@ def clear_todos():
     todos.clear()
     global current_id
     current_id = 1
+
+def test_create_milestone():
+    milestone_data = {
+        "title": "Project Launch",
+        "description": "Launch MVP version",
+        "due_date": str(date.today() + timedelta(days=30)),
+        "completed": False
+    }
+    response = client.post("/timeline/milestones", json=milestone_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["title"] == milestone_data["title"]
+    assert data["description"] == milestone_data["description"]
+    assert "id" in data
+    assert "created_at" in data
+
+def test_get_milestones():
+    # Create test milestone
+    milestone_data = {
+        "title": "Test Milestone",
+        "due_date": str(date.today())
+    }
+    client.post("/timeline/milestones", json=milestone_data)
+    
+    response = client.get("/timeline/milestones")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+
+def test_update_milestone():
+    # Create test milestone
+    milestone_data = {
+        "title": "Test Milestone",
+        "due_date": str(date.today())
+    }
+    create_response = client.post("/timeline/milestones", json=milestone_data)
+    milestone_id = create_response.json()["id"]
+    
+    # Update milestone
+    update_data = {
+        "title": "Updated Milestone",
+        "completed": True,
+        "due_date": str(date.today())
+    }
+    response = client.put(f"/timeline/milestones/{milestone_id}", json=update_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["title"] == update_data["title"]
+    assert data["completed"] == update_data["completed"]
+
+def test_delete_milestone():
+    # Create test milestone
+    milestone_data = {
+        "title": "Test Milestone",
+        "due_date": str(date.today())
+    }
+    create_response = client.post("/timeline/milestones", json=milestone_data)
+    milestone_id = create_response.json()["id"]
+    
+    # Delete milestone
+    response = client.delete(f"/timeline/milestones/{milestone_id}")
+    assert response.status_code == 200
+    
+    # Verify deletion
+    get_response = client.get(f"/timeline/milestones/{milestone_id}")
+    assert get_response.status_code == 404
+
+def test_timeline_overview():
+    # Create test milestones
+    today = date.today()
+    milestones_data = [
+        {"title": "Past Due", "due_date": str(today - timedelta(days=1)), "completed": False},
+        {"title": "Completed", "due_date": str(today), "completed": True},
+        {"title": "Upcoming", "due_date": str(today + timedelta(days=1)), "completed": False}
+    ]
+    
+    for milestone in milestones_data:
+        client.post("/timeline/milestones", json=milestone)
+    
+    response = client.get("/timeline/overview")
+    assert response.status_code == 200
+    data = response.json()
+    
+    assert "total_milestones" in data
+    assert "completed_milestones" in data
+    assert "upcoming_milestones" in data
+    assert "overdue_milestones" in data
+    assert "next_deadline" in data
+
+@pytest.fixture(autouse=True)
+def clear_milestones():
+    # Clear milestones before each test
+    milestones.clear()
+    global milestone_current_id
+    milestone_current_id = 1
 
