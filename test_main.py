@@ -134,6 +134,11 @@ def test_get_nonexistent_todo():
     response = client.get("/todos/9999")
     assert response.status_code == 404
 
+def test_get_nonexistent_todo_2():
+    response = client.get("/todos/9999")
+    status_code = response.status_code
+    assert status_code == 404
+
 @pytest.fixture(autouse=True)
 def clear_todos():
     # Clear todos before each test
