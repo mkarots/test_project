@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airway - Project Management & Deployment Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-2xl font-bold text-indigo-600">Airway</h1>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="/docs" class="text-gray-600 hover:text-indigo-600 px-3 py-2">API Docs</a>
+                    <a href="#features" class="text-gray-600 hover:text-indigo-600 px-3 py-2">Features</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-indigo-700">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">
+                    Project Management Made Simple
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-xl text-indigo-200">
+                    Streamline your project workflow with our comprehensive management and deployment tool.
+                </p>
+                <div class="mt-8">
+                    <div id="current-time" class="text-white text-xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">
+                    Powerful Features for Your Projects
+                </h2>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Todo Management -->
+                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl text-indigo-600 mb-4">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Todo Management</h3>
+                        <p class="text-gray-600 text-center">
+                            Create, track, and manage tasks with ease. Keep your projects organized and on schedule.
+                        </p>
+                    </div>
+
+                    <!-- Project Timeline -->
+                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl text-indigo-600 mb-4">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Project Timeline</h3>
+                        <p class="text-gray-600 text-center">
+                            Set milestones, track progress, and visualize your project timeline with comprehensive overview.
+                        </p>
+                    </div>
+
+                    <!-- Real-time Updates -->
+                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                        <div class="text-4xl text-indigo-600 mb-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Real-time Updates</h3>
+                        <p class="text-gray-600 text-center">
+                            Stay synchronized with real-time updates and current project status monitoring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Overview -->
+    <div class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900">
+                    API Endpoints
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Todo API</h3>
+                    <ul class="text-gray-600">
+                        <li>GET /todos</li>
+                        <li>POST /todos</li>
+                        <li>PUT /todos/{id}</li>
+                        <li>DELETE /todos/{id}</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Timeline API</h3>
+                    <ul class="text-gray-600">
+                        <li>GET /timeline/milestones</li>
+                        <li>POST /timeline/milestones</li>
+                        <li>GET /timeline/overview</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold mb-2">Utility API</h3>
+                    <ul class="text-gray-600">
+                        <li>GET /datetime</li>
+                        <li>GET /random-words</li>
+                        <li>GET /health</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-gray-400">
+                <p>Airway API v0.1.0</p>
+                <p class="mt-2">Project Management and Deployment Tool</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for real-time clock -->
+    <script>
+        function updateTime() {
+            fetch('/datetime')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('current-time').textContent = 
+                        `Current Time: ${new Date(data.datetime).toLocaleString()}`;
+                })
+                .catch(error => console.error('Error fetching time:', error));
+        }
+
+        // Update time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html> 
