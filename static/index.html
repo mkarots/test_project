@@ -51,46 +51,202 @@
                 </h2>
             </div>
 
-            <div class="mt-10">
-                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    <!-- Todo Management -->
-                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+            <div class="mt-10 space-y-16">
+                <!-- Todo Management Feature Card -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col items-center mb-4">
                         <div class="text-4xl text-indigo-600 mb-4">
                             <i class="fas fa-tasks"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Todo Management</h3>
-                        <p class="text-gray-600 text-center">
+                        <p class="text-gray-600 text-center max-w-xl">
                             Create, track, and manage tasks with ease. Keep your projects organized and on schedule.
                         </p>
                     </div>
 
-                    <!-- Project Timeline -->
-                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                    <!-- Embedded Todo Mockup -->
+                    <div class="mt-6 border border-gray-200 p-4 rounded bg-white max-w-2xl mx-auto">
+                        <h4 class="text-lg font-semibold mb-3 text-gray-700 text-center">Example Interface: Todos</h4>
+                         <!-- Add Todo Form -->
+                        <div class="mb-4 bg-gray-100 p-3 rounded">
+                            <div class="flex gap-2">
+                                <input type="text" placeholder="New Todo Title" class="flex-grow p-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400">
+                                <button class="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600">Add</button>
+                            </div>
+                        </div>
+                         <!-- Todo List -->
+                        <ul class="space-y-2">
+                            <li class="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800">Finish project proposal</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                            <li class="flex items-center justify-between bg-gray-50 p-2 rounded border border-gray-200 opacity-60">
+                                <div class="flex items-center">
+                                    <input type="checkbox" checked class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800 line-through">Schedule team meeting</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                             <li class="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800">Update dependencies</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project Timeline Feature Card -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                     <div class="flex flex-col items-center mb-4">
                         <div class="text-4xl text-indigo-600 mb-4">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Project Timeline</h3>
-                        <p class="text-gray-600 text-center">
+                        <p class="text-gray-600 text-center max-w-xl">
                             Set milestones, track progress, and visualize your project timeline with comprehensive overview.
                         </p>
                     </div>
 
-                    <!-- Real-time Updates -->
-                    <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                    <!-- Container for Both Timeline Mockups -->
+                    <div class="mt-6 space-y-8">
+
+                        <!-- Simple List Style Mockup -->
+                        <div class="border border-gray-200 p-4 pt-6 rounded bg-white max-w-3xl mx-auto">
+                            <h4 class="text-lg font-semibold mb-3 text-gray-700 text-center">Example Interface: List View</h4>
+                            <!-- Timeline Overview (Assuming 4 items based on examples below) -->
+                            <div class="mb-4 grid grid-cols-4 gap-2 text-center">
+                                <div class="bg-blue-50 p-2 rounded">
+                                    <div class="text-xl font-bold text-blue-600">4</div>
+                                    <div class="text-xs text-blue-800">Total</div>
+                                </div>
+                                <div class="bg-green-50 p-2 rounded">
+                                    <div class="text-xl font-bold text-green-600">1</div>
+                                    <div class="text-xs text-green-800">Done</div>
+                                </div>
+                                <div class="bg-yellow-50 p-2 rounded"> <!-- Combined Upcoming/Pending for this simple view -->
+                                    <div class="text-xl font-bold text-yellow-600">2</div>
+                                    <div class="text-xs text-yellow-800">Upcoming</div>
+                                </div>
+                                <div class="bg-red-50 p-2 rounded">
+                                    <div class="text-xl font-bold text-red-600">1</div>
+                                    <div class="text-xs text-red-800">Overdue</div>
+                                </div>
+                            </div>
+                            <!-- Milestone List -->
+                            <ul class="space-y-2">
+                                <!-- Milestone 1: Completed -->
+                                <li class="flex items-center justify-between bg-green-50 p-2 rounded border border-green-200 opacity-70">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" checked class="mr-2 h-4 w-4">
+                                        <span class="text-sm font-medium text-gray-800 line-through">Phase 1 Delivery</span>
+                                    </div>
+                                    <span class="text-xs font-semibold text-green-600">Completed (Due: 2024-02-15)</span>
+                                </li>
+                                <!-- Milestone 2: Overdue -->
+                                <li class="flex items-center justify-between bg-red-50 p-2 rounded border border-red-200">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2 h-4 w-4">
+                                        <span class="text-sm font-medium text-gray-800">User Testing Setup</span>
+                                    </div>
+                                    <span class="text-xs font-semibold text-red-600">Overdue (Due: 2024-03-01)</span>
+                                </li>
+                                <!-- Milestone 3: Upcoming -->
+                                <li class="flex items-center justify-between bg-yellow-50 p-2 rounded border border-yellow-200">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2 h-4 w-4">
+                                        <span class="text-sm font-medium text-gray-800">Beta Release</span>
+                                    </div>
+                                    <span class="text-xs font-semibold text-yellow-700">Due: 2024-04-05</span>
+                                </li>
+                                <!-- Milestone 4: Pending/Future Upcoming -->
+                                 <li class="flex items-center justify-between bg-gray-50 p-2 rounded border border-gray-200">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2 h-4 w-4">
+                                        <span class="text-sm font-medium text-gray-800">Final Launch</span>
+                                    </div>
+                                    <span class="text-xs font-semibold text-gray-500">Due: 2024-05-01</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Ant Design Style Mockup -->
+                        <div class="border border-gray-200 p-4 pt-6 rounded bg-white max-w-lg mx-auto">
+                            <h4 class="text-lg font-semibold mb-5 text-gray-700 text-center">Example Interface: Timeline View</h4>
+                            <div class="relative pl-6"> <!-- Container for timeline items -->
+                                <!-- Vertical line -->
+                                <div class="absolute left-2.5 top-1 bottom-1 w-0.5 bg-gray-200"></div>
+                                <!-- Timeline Item 1: Completed -->
+                                <div class="relative mb-6">
+                                    <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-green-500 text-lg bg-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-800">Phase 1 Delivery</p>
+                                        <p class="text-xs text-gray-500">Delivered core feature set. (Due: 2024-02-15)</p>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 2: Overdue/Warning -->
+                                <div class="relative mb-6">
+                                    <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                        <i class="fas fa-exclamation-circle text-red-500 text-lg bg-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-800">User Testing Setup</p>
+                                        <p class="text-xs text-gray-500">Prepare environment for user testing. (Due: 2024-03-01)</p>
+                                        <p class="text-xs font-semibold text-red-600">Overdue</p>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 3: In Progress/Upcoming -->
+                                <div class="relative mb-6">
+                                    <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                        <i class="fas fa-circle text-blue-500 text-base bg-white border-2 border-blue-500 rounded-full" style="font-size: 0.6rem; padding: 0.1rem;"></i> <!-- Smaller blue circle -->
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-800">Beta Release</p>
+                                        <p class="text-xs text-gray-500">Deploy beta version to testers. (Due: 2024-04-05)</p>
+                                    </div>
+                                </div>
+                                <!-- Timeline Item 4: Pending/Future Upcoming -->
+                                <div class="relative mb-6">
+                                    <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                        <i class="fas fa-clock text-gray-400 text-lg bg-white"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-800">Final Launch</p>
+                                        <p class="text-xs text-gray-500">Prepare for production deployment. (Due: 2024-05-01)</p>
+                                        <p class="text-xs font-semibold text-gray-500">Pending</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Real-time Updates Feature Card -->
+                 <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                     <div class="flex flex-col items-center">
                         <div class="text-4xl text-indigo-600 mb-4">
                             <i class="fas fa-clock"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Real-time Updates</h3>
-                        <p class="text-gray-600 text-center">
-                            Stay synchronized with real-time updates and current project status monitoring.
+                        <p class="text-gray-600 text-center max-w-xl">
+                            Stay synchronized with real-time updates and current project status monitoring via API endpoints like `/datetime` and `/health`.
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- API Overview -->
+    <!-- API Overview Section -->
     <div class="py-12 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
@@ -113,6 +269,8 @@
                     <ul class="text-gray-600">
                         <li>GET /timeline/milestones</li>
                         <li>POST /timeline/milestones</li>
+                         <li>PUT /timeline/milestones/{id}</li>
+                         <li>DELETE /timeline/milestones/{id}</li>
                         <li>GET /timeline/overview</li>
                     </ul>
                 </div>
@@ -144,13 +302,14 @@
             fetch('/datetime')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('current-time').textContent = 
-                        `Current Time: ${new Date(data.datetime).toLocaleString()}`;
+                    const timeElement = document.getElementById('current-time');
+                    if (timeElement) {
+                        timeElement.textContent =
+                            `Current Time: ${new Date(data.datetime).toLocaleString()}`;
+                    }
                 })
                 .catch(error => console.error('Error fetching time:', error));
         }
-
-        // Update time immediately and then every second
         updateTime();
         setInterval(updateTime, 1000);
     </script>
