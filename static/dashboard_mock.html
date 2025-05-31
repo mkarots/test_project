@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard Mockup</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8 flex justify-between items-center">
+            <h1 class="text-4xl font-bold text-indigo-700">Project Airway Dashboard</h1>
+            <a href="static/index.html" class="text-indigo-600 hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Landing Page
+            </a>
+        </div>
+
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Left Column (Timeline & Diary) -->
+            <div class="lg:col-span-2 space-y-8">
+
+                <!-- Timeline Section -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Project Timeline</h2>
+
+                    <!-- Conceptual Note -->
+                    <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <strong>Concept:</strong> Define high-level project goals (e.g., "Launch MVP"). These become major milestones. As you add specific Todos, link them to a goal/milestone. The timeline dynamically shows tasks grouped under their milestones.
+                    </div>
+
+                    <!-- Ant Design Style Mockup (Modified to show linked tasks concept) -->
+                    <div class="border border-gray-200 p-4 pt-6 rounded bg-white max-w-lg mx-auto">
+                        <div class="relative pl-6">
+                            <div class="absolute left-2.5 top-1 bottom-1 w-0.5 bg-gray-200"></div>
+                            <!-- Timeline Item 1: Completed -->
+                            <div class="relative mb-6">
+                                <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-green-500 text-lg bg-white"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-800">Goal: Phase 1 Delivery</p>
+                                    <p class="text-xs text-gray-500">Completed (Due: 2024-02-15)</p>
+                                    <!-- Example linked tasks -->
+                                    <ul class="list-disc list-inside text-xs text-gray-600 mt-1 ml-2">
+                                        <li class="line-through">Task: Finalize core API</li>
+                                        <li class="line-through">Task: Deploy initial DB schema</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <!-- Timeline Item 2: Overdue/Warning -->
+                            <div class="relative mb-6">
+                                <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                    <i class="fas fa-exclamation-circle text-red-500 text-lg bg-white"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-800">Goal: User Testing Setup</p>
+                                    <p class="text-xs text-gray-500">(Due: 2024-03-01)</p>
+                                    <p class="text-xs font-semibold text-red-600">Overdue</p>
+                                     <!-- Example linked tasks -->
+                                    <ul class="list-disc list-inside text-xs text-gray-600 mt-1 ml-2">
+                                        <li>Task: Prepare testing environment</li>
+                                        <li>Task: Recruit beta testers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <!-- Timeline Item 3: In Progress/Upcoming -->
+                             <div class="relative mb-6">
+                                <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                    <i class="fas fa-circle text-blue-500 text-base bg-white border-2 border-blue-500 rounded-full" style="font-size: 0.6rem; padding: 0.1rem;"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-800">Goal: Beta Release</p>
+                                    <p class="text-xs text-gray-500">(Due: 2024-04-05)</p>
+                                </div>
+                            </div>
+                             <!-- Timeline Item 4: Pending/Future Upcoming -->
+                            <div class="relative mb-6">
+                                <div class="absolute left-0 top-1 transform -translate-x-1/2 w-5 h-5 flex items-center justify-center">
+                                    <i class="fas fa-clock text-gray-400 text-lg bg-white"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-sm font-medium text-gray-800">Goal: Final Launch</p>
+                                    <p class="text-xs text-gray-500">(Due: 2024-05-01)</p>
+                                    <p class="text-xs font-semibold text-gray-500">Pending</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Diary Entries Section -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-semibold text-gray-800">Recent Diary Entries</h2>
+                        <a href="diary_mock.html" class="text-indigo-600 hover:underline text-sm">View Full Diary <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="border-b pb-2 border-gray-200">
+                            <p class="text-sm font-semibold text-gray-700">2024-03-14</p>
+                            <p class="text-sm text-gray-600 truncate">Discussed timeline adjustments with the team, focusing on the upcoming Beta Release milestone...</p>
+                        </li>
+                         <li class="border-b pb-2 border-gray-200">
+                            <p class="text-sm font-semibold text-gray-700">2024-03-13</p>
+                            <p class="text-sm text-gray-600 truncate">Completed integration tests for the core API. Identified a minor bug in auth handling...</p>
+                        </li>
+                         <li> <!-- No border on last item -->
+                            <p class="text-sm font-semibold text-gray-700">2024-03-12</p>
+                            <p class="text-sm text-gray-600 truncate">Started work on recruiting beta testers. Drafted initial outreach email...</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Right Column (Todos & Stats) -->
+            <div class="lg:col-span-1 space-y-8">
+
+                <!-- Project Stats -->
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Project Overview</h2>
+                     <div class="grid grid-cols-2 gap-4 text-center">
+                         <div class="bg-blue-50 p-3 rounded">
+                            <div class="text-2xl font-bold text-blue-600">4</div>
+                            <div class="text-xs text-blue-800">Milestones</div>
+                        </div>
+                         <div class="bg-green-50 p-3 rounded">
+                            <div class="text-2xl font-bold text-green-600">15</div> <!-- Example total tasks -->
+                            <div class="text-xs text-green-800">Total Tasks</div>
+                        </div>
+                         <div class="bg-yellow-50 p-3 rounded">
+                            <div class="text-2xl font-bold text-yellow-600">8</div> <!-- Example open tasks -->
+                            <div class="text-xs text-yellow-800">Open Tasks</div>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded">
+                            <div class="text-2xl font-bold text-red-600">1</div>
+                            <div class="text-xs text-red-800">Overdue Milestones</div>
+                        </div>
+                     </div>
+                 </div>
+
+                <!-- Todos Section -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Action Items (Todos)</h2>
+                    <!-- Embedded Todo Mockup (Slightly simplified for dashboard) -->
+                    <div>
+                        <div class="mb-4 bg-gray-100 p-3 rounded">
+                             <div class="flex gap-2">
+                                <input type="text" placeholder="Quick Add Todo" class="flex-grow p-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400">
+                                <button class="bg-indigo-500 text-white px-3 py-1 rounded text-sm hover:bg-indigo-600">Add</button>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 max-h-80 overflow-y-auto pr-2"> <!-- Added scroll -->
+                            <li class="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800">Task: Prepare testing environment</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                            <li class="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800">Task: Recruit beta testers</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                             <li class="flex items-center justify-between bg-gray-50 p-2 rounded border border-gray-200 opacity-60">
+                                <div class="flex items-center">
+                                    <input type="checkbox" checked class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800 line-through">Task: Finalize core API</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                             <li class="flex items-center justify-between bg-white p-2 rounded border border-gray-200">
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800">Task: Draft beta announcement</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                            <li class="flex items-center justify-between bg-gray-50 p-2 rounded border border-gray-200 opacity-60">
+                                <div class="flex items-center">
+                                    <input type="checkbox" checked class="mr-2 h-4 w-4 text-indigo-600">
+                                    <span class="text-sm text-gray-800 line-through">Task: Deploy initial DB schema</span>
+                                </div>
+                                <button class="text-red-400 hover:text-red-600 text-xs"><i class="fas fa-trash"></i></button>
+                            </li>
+                            <!-- Add more example todos if needed -->
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div> <!-- End Grid -->
+
+    </div> <!-- End Container -->
+</body>
+</html> 
