@@ -36,7 +36,6 @@ function GreetingCard({ name, message = "Hello" }) {
   );
 }
 
-
 /*
 // --- How to use this component in a React App ---
 
