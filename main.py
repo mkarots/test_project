@@ -4,6 +4,8 @@ import uvicorn
 import logging
 from datetime import datetime
 import random
+from openai import AsyncOpenAI
+from pydantic import BaseModel
 
 # Configure logging
 logging.basicConfig(
@@ -30,6 +32,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+client = AsyncOpenAI()
+
+class OpenAIRequest(BaseModel):
+    prompt: str
 
 # Add word lists
 ADJECTIVES = ['happy', 'bright', 'blue', 'clever', 'gentle', 'swift', 'bold', 'calm', 'kind', 'wise', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick', 'happy', 'sad', 'angry', 'excited', 'bored', 'hungry', 'thirsty', 'tired', 'sick']
@@ -70,6 +76,16 @@ async def get_random_words():
         "adjective": random_adj,
         "noun": random_noun
     }
+
+@app.post("/openai")
+async def forward_to_openai(request: OpenAIRequest):
+    completion = await client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": request.prompt}
+        ]
+    )
+    return completion
 
 if __name__ == "__main__":
     logger.info("Starting Airway API server")
